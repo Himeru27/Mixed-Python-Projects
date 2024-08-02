@@ -1,0 +1,350 @@
+x = "Awesome" #Global variable that has a value
+
+def myFunc(): #myFunc is Variable Name. that can be changed
+  print("Python is : " + x)
+
+myFunc()
+
+------------------------
+
+
+x="awesome" #Global variable with value = "awesome"
+def myFunc(): #Function myFunc(Paramaters/Arguments)
+    x="Fantastic" #local variable with value = "Fantastic"
+    print("Python is " + x) #Output for local
+
+myFunc() #called teh function
+print("Python is " +x) #output global
+
+
+-------------------------
+
+def myFunc():
+  global x
+x="Fantastic"
+
+myFunc()
+print("Python is " + x)
+
+
+-----------------------------
+
+
+x="awesome"
+
+def myFunc():
+  global x
+  x="Fantastic"
+
+myFunc()
+print("Python is " + x)
+
+
+-------------------
+
+
+grade1=75
+grade2=74 
+grade3=75
+
+print(grade1 + grade2 + grade3)
+
+
+
+-------------------
+
+
+
+
+x= 20
+print(x)
+
+print(type(x))
+
+
+
+
+-----------------------
+
+
+x=1.10
+y=1.0
+z=-45.44343
+
+print(type(x))
+print(type(y))
+print(type(z))
+
+
+
+------------------------
+
+
+a=1 #int
+b=1.8 #float
+c=1j  #complex
+
+#convert int to float
+
+x=float(a)
+print(x)
+print(type(x))
+
+
+-------------------------
+
+
+a=1 #int
+b=1.8 #float
+c=1j  #complex
+
+#convert float to int
+y=int(b)
+print(y)
+print(type(y))
+
+
+
+-----------------------
+
+#From int to complex
+
+a=1 #int
+b=1.8 #float
+c=1j  #complex
+
+z=complex(a)
+print(z)
+
+print(type(z))
+
+
+-----------------------
+
+
+import random 
+
+print(random.randrange(6,120))
+
+---------------------
+
+
+x=10
+y=1.0
+z=1j
+
+print(type(x)) #output int
+print(type(y)) #output float
+print(type(z)) #output complex
+
+
+
+-------------------
+
+
+x=1
+y=-1
+z=999999349934843834838438983446483848348438748348743
+
+print(type(x))
+print(type(y))
+print(type(z))
+
+----------------
+
+
+x=1.23323232
+y=-1.233443
+z=999999349934843834838438983446483848348438748348743.004
+
+print(type(x))
+print(type(y))
+print(type(z))
+
+--------------------
+
+
+a="""I'am Charlie C. Yabes........... blah blah blah... blah.... blah... blah.... blahhh"""
+
+print(a)
+
+-----------------
+
+
+x=5 #int
+y=2.8 #float
+z=2j #complex
+
+
+#convert from int to float:
+
+a = float(x)
+print(a)
+
+print(type(a))
+
+
+-----------------
+
+
+x=5 #int
+y=2.8 #float
+z=2j #complex
+
+#convert from float to int
+
+b=int(y)
+print(b)
+c=float(b)
+
+print(c)
+
+
+
+-----------------------
+
+
+x=5 #int
+y=2.8 #float
+z=2j #complex
+
+#convert from in to complex
+
+c=complex(x)
+print(c)
+
+print(type(c))
+
+
+
+-------------------------
+
+
+import random
+
+print(random.randrange(1,18))
+
+
+------------------
+
+
+x = int(1)
+y = int(2.4)
+z = int("5")
+
+print(x)
+print(y)
+print(z)
+
+------------------
+
+x = float (1)
+y = float (2.4)
+z = float ("5")
+w = float ("2.5")
+
+print(x)
+print(y)
+print(z)
+print(w)
+
+------------------
+
+
+x = str (1)
+y = str (2.4)
+z = str ("5")
+w = str ("2.5")
+
+print(x)
+print(y)
+print(z)
+print(w)
+
+print(type(x))
+print(type(y))
+print(type(z))
+print(type(w))
+
+--------------------
+
+a = "Hello"
+print(a)
+print(type(a))
+
+--------------------
+
+a = "Hello World!" 
+print(len(a)) #
+
+---------------
+
+#slicing
+#you can return a range of characters by using the slice syntax
+
+a = "Hello World!" 
+print(a[2:9])
+
+
+
+----------------
+
+#Modify STring
+
+#The upper() method returns the string in upper case:
+
+a = "Hello World!" 
+print(a.upper())
+
+---------------
+
+
+#Negative Indexing
+
+a = "Hello World!" 
+print(a[-5:-2])
+
+
+-----------
+
+#Slice To the End
+#By Leaving out the end index, the range will go to the end
+
+a = "Hello World!" 
+print(a[2:])
+
+--------------
+
+#Modify STring
+
+#The upper() method returns the string in upper case:
+
+a = "Hello World!" 
+print(a.lower())
+
+-----------------
+
+#Remove WhiteSpace
+#The strip() method removes any whitespace from the beginning or the end:
+
+a = " Hello World! " 
+print(a.strip())
+
+--------------
+
+#Replace String
+#The replace() method replaces a string with another string:
+
+a = "Hello World!" 
+print(a.replace("He","IT"))
+
+------------------
+
+#Split String
+#The split() method returns a list where the text between the specified separator becomes the list items.
+
+a = "Hello, World!, Python"
+print(a.split(","))
+
+
+---------------------------
