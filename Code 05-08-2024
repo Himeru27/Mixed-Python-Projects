@@ -1,0 +1,16 @@
+a = int(input("Please enter your grade:"))
+
+if a >= 95:
+    print("Wow Honor!")
+elif a <= 60:
+    print("Lala bay!")
+elif a == 90:
+    print("Hapit ma Honor Gamay nalang..")
+elif a <= 30:
+    print("Undang Nalang oi!")
+elif a == 76:
+    print("Hapit Bagsak!")
+elif a <= 74:
+    print("Uy bagsak!")
+elif a >= 75:
+    print("Passar bay!")
