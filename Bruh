@@ -1,0 +1,8 @@
+a = input("Please Enter your name: ")
+b = input("Please Enter your Phone Number: ")
+c = input("Please Enter your Email Address: ")
+d = "My Name is"
+e = "and my phone number is "
+f = "and my email address is"
+
+print(d, "" + a + ",","" + e + b + ",","" + f + " " + c + ".")
