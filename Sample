@@ -1,0 +1,14 @@
+# input string
+username = input(" Enter Username: ")
+password = str(input("password: "))
+confirmpassword = str(input("confirm password: "))
+email = str(input("email: "))
+
+if(password == confirmpassword):
+    print("registration success")
+    print("Welcome to admin dashboard", email)
+elif(password != confirmpassword): 
+    print("confirm password and password is not equal")
+else:
+    print("please try again!!")
+
