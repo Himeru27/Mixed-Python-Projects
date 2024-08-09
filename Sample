@@ -4,11 +4,11 @@ password = str(input("password: "))
 confirmpassword = str(input("confirm password: "))
 email = str(input("email: "))
 
-if(password == confirmpassword):
-    print("registration success")
-    print("Welcome to admin dashboard", email)
-elif(password != confirmpassword): 
-    print("confirm password and password is not equal")
+if(password == confirmpassword): #if password confirmed
+    print("registration success") #if credentials matched
+    print("Welcome to admin dashboard", email) #output
+elif(password != confirmpassword): #Confirm pass
+    print("confirm password and password is not equal") #if pass not match
 else:
-    print("please try again!!")
+    print("please try again!!") #if pass not match
 
