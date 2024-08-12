@@ -1,0 +1,53 @@
+import time
+
+u = input("Please enter your username: ")
+a = int(input("Please enter your Password: "))
+b = int(input("Please confirm your Password: "))
+count = 5
+
+if a != b:
+    print("Wrong Password! Please try again..")
+    exit()
+
+while count > 0:
+    print("Logging in...", count)
+    time.sleep(1)
+    count -= 1
+
+print("Login Successful!")
+print("Welcome!", u)
+
+
+--------------------------------------------------------------
+
+
+import time
+
+u = input("Please enter your username: ")
+a = int(input("Please enter your Password: "))
+b = int(input("Please confirm your Password:"))
+count = 5
+confirm_password = b
+ 
+
+invalid_password = False
+
+
+if a == b:
+    print("Password Confirmed!")
+else:
+    print("Invalid Password!")
+
+if b != b:
+    print("Invalid Password!")
+
+while count > 0:
+    print("Logging in...", count)
+    time.sleep(1)
+    count = count - 1
+else:
+    print("Login Successfully!")
+
+if b == a:
+    print("Welcome! ", u)
+    
