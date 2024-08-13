@@ -1,0 +1,22 @@
+a = input("Enter a number: ")
+
+number = int(a)
+
+if a == str:
+    print("Please enter a number")
+else:
+    print(a)
+
+
+------------------
+
+User_input = input("Enter a number:")
+number = int(User_input)
+Haha = str(User_input)
+
+
+if User_input == Haha:
+    print("Please enter a number!")
+else:
+    print(User_input)
+
