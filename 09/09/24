@@ -1,0 +1,21 @@
+x = int(input("Please enter your first number: "))
+y = int(input("Please enter your second number: "))
+z = int(input("Please enter your third number: "))
+
+if x == y == z:
+    print("3 tie highest number")
+    exit()
+if x == y:
+    print("two tie is higher number")
+    exit()
+if y < z:
+    print("y is greater than z")
+    exit()
+if z < x:
+    print("z is greater than x")
+if z == y:
+    print("2 is tie highest number")
+    exit()
+if y == z:
+    print("2 tie highest number")
+    exit()
