@@ -1,0 +1,16 @@
+
+a = input("Unsay imo? ")
+
+
+fruits = ["Saging", "Mansanas", "Santol"]
+prices = {
+    "Saging": 20,
+    "Mansanas": 15,
+    "Santol": 25
+}
+
+if a in fruits:
+    print(a, "Imoha?")
+    print("Tag", prices, "ang", a)
+else:
+    print("Wa nakay lain ana? ")
