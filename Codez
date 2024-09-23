@@ -1,6 +1,4 @@
-
 a = input("Unsay imo? ")
-
 
 fruits = ["Saging", "Mansanas", "Santol"]
 prices = {
@@ -11,6 +9,6 @@ prices = {
 
 if a in fruits:
     print(a, "Imoha?")
-    print("Tag", prices, "ang", a)
+    print("Tag", prices[a], "ang", a)
 else:
-    print("Wa nakay lain ana? ")
+    print("Wa nakay lain ana?")
