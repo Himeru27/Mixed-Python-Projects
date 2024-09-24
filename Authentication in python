@@ -1,0 +1,24 @@
+count = "Himeru123456"
+print("Please sign up your username and password")
+user = input("Please enter your username: ")
+password = input("Please enter your password(Password needs to be at least 8 digit characters with unique letters): ")
+password_confirm = input("Please confirm your password(Password needs to be at least 8 digit characters with unique letters): ")
+
+if password >= count:
+    username_log = input("Please enter your username: ")
+    password_log = input("Please enter your password: ")
+if password != count:
+    print("Bugo! Balik bi! wala ramana nag 8 digits!")
+
+if password_log and username_log == user and password:
+     print("Login successfully! ")
+     print("do you want to change password? (y/n): ")
+     a = input("")
+if a == "y":
+    pazz = input("Please enter your new password(Password needs to be at least 8 digit characters with unique letters): ")
+    pazz2 = input("Please confirm your new password(Password needs to be at least 8 digit characters with unique letters): ")
+if pazz2 == pazz:
+    print("Password Changed successfully!")
+else: 
+    print("Bugo! Balik bi!")
+
