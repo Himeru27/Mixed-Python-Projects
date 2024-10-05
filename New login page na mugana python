@@ -1,0 +1,27 @@
+print("Login or Signup?")
+choose = input("Please Choose: ")
+
+if choose == "signup":
+    choose = "signup"
+    sign_up_username = input("Please enter your prefered username: ")
+    sign_up_password = input("Please enter your Password: ")
+    confirm_password = input("Please confirm your Password: ")
+elif choose == "login":
+    print("You don't have an account yet..")
+    print("Please create a new account to continue!")
+    exit()
+else: 
+    print("Please enter your password Correctly!")
+
+if confirm_password == sign_up_password:
+    print("Account Created Successfully! ")
+    print("Please log in your account")
+    login_user = input("Please enter your username: ")
+    login_password = input("Please enter your Password: ")
+else:
+    print("Please input your username and password correctly!")
+
+if login_password == sign_up_password:
+    print("Welcome! User", login_user)
+else:
+    print("Please input your username or password Correctly! ")
