@@ -1,5 +1,6 @@
 print("Login or Signup?")
 choose = input("Please Choose: ")
+current_bal = 0
 
 if choose == "signup":
     choose = "signup"
@@ -9,9 +10,10 @@ if choose == "signup":
 elif choose == "login":
     print("You don't have an account yet..")
     print("Please create a new account to continue!")
+    print("Verifying..")
     exit()
-else: 
-    print("Please enter your password Correctly!")
+else:
+    print("Please enter your user and password Correctly!")
 
 if confirm_password == sign_up_password:
     print("Account Created Successfully! ")
@@ -23,7 +25,43 @@ else:
 
 if login_user != sign_up_username:
     print("Incorrect Username.. Please try again!")
+    login_user
+    login_password
 elif login_password == sign_up_password:
     print("Welcome! User", login_user)
+    print("--------- G Cash cuz yez -----------")
+    print("1. User Profile ")
+    print("2. Check Balance ")
+    print("3. Check and Deposit Cash ")
+    print("4. Withdraw Cash")
+    print("5. Log out ")
+    choice = input("Please choose what number you want to input: ")
 else:
     print("Please input your username or password Correctly! ")
+
+if choice == "profile":
+  print("--------", login_user,"--------")
+  print("Credentials:")
+  print("Name: ")
+
+elif choice == "check balance":
+  print("Your Current balance is..", current_bal)
+
+elif choice == "deposit":
+  print("You don't have enough credit for you to deposit..")
+  depo = input("Do you want to deposit cash into your account?(y/n): ")
+  if depo == "y":
+    witdro = int(input("How much cash do you want to deposit?: $"))
+    total = witdro + current_bal
+    current_bal = total
+    print("$",witdro,"Has been added to you account and has now.. $",current_bal)
+    choice2 = input("What do you want to do now?: ")
+else:
+  print("Please refresh")
+
+if choice2 == "withdraw":
+    withdraw = int(input("How much do you want to withdraw?: "))
+    current_bal -= withdraw
+    print("Your current balance is now.. $", current_bal)
+else:
+   print("Please try again..")
