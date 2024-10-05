@@ -21,7 +21,9 @@ if confirm_password == sign_up_password:
 else:
     print("Please input your username and password correctly!")
 
-if login_password == sign_up_password:
+if login_user != sign_up_username:
+    print("Incorrect Username.. Please try again!")
+elif login_password == sign_up_password:
     print("Welcome! User", login_user)
 else:
     print("Please input your username or password Correctly! ")
