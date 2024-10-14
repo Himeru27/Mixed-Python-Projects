@@ -1,0 +1,118 @@
+import tkinter as tk
+from tkinter import messagebox
+
+
+current_bal = 0
+users = {}
+
+
+def signup():
+    username = entry_signup_username.get()
+    password = entry_signup_password.get()
+    confirm_password = entry_confirm_password.get()
+    
+    if password == confirm_password:
+        users[username] = password
+        messagebox.showinfo("Success", "Account Created Successfully! Please log in.")
+        show_login()
+    else:
+        messagebox.showerror("Error", "Passwords do not match!")
+
+def login():
+    username = entry_login_username.get()
+    password = entry_login_password.get()
+    
+    if username in users and users[username] == password:
+        messagebox.showinfo("Success", f"Welcome, {username}!")
+        show_main_menu(username)
+    else:
+        messagebox.showerror("Error", "Invalid username or password!")
+
+def handle_balance(username):
+    messagebox.showinfo("Balance", f"Your current balance is: ${current_bal}")
+    show_main_menu(username)
+
+def handle_deposit(username):
+    global current_bal
+    try:
+        amount = int(entry_amount.get())
+        current_bal += amount
+        messagebox.showinfo("Deposit", f"${amount} has been deposited. Current balance: ${current_bal}")
+    except ValueError:
+        messagebox.showerror("Error", "Please enter a valid number.")
+    show_main_menu(username)
+
+def handle_withdraw(username):
+    global current_bal
+    try:
+        amount = int(entry_amount.get())
+        if amount > current_bal:
+            messagebox.showerror("Error", "Insufficient funds!")
+        else:
+            current_bal -= amount
+            messagebox.showinfo("Withdraw", f"You withdrew ${amount}. Current balance: ${current_bal}")
+    except ValueError:
+        messagebox.showerror("Error", "Please enter a valid number.")
+    show_main_menu(username)
+
+
+root = tk.Tk()
+root.title("Login or Signup")
+root.geometry("300x300")
+
+def show_signup():
+    clear_window()
+    tk.Label(root, text="Signup").pack()
+    global entry_signup_username, entry_signup_password, entry_confirm_password
+    entry_signup_username = create_entry("Username")
+    entry_signup_password = create_entry("Password", show="*")
+    entry_confirm_password = create_entry("Confirm Password", show="*")
+    tk.Button(root, text="Create Account", command=signup).pack()
+    tk.Button(root, text="Back", command=show_initial_screen).pack()
+
+def show_login():
+    clear_window()
+    tk.Label(root, text="Login").pack()
+    global entry_login_username, entry_login_password
+    entry_login_username = create_entry("Username")
+    entry_login_password = create_entry("Password", show="*")
+    tk.Button(root, text="Login", command=login).pack()
+    tk.Button(root, text="Back", command=show_initial_screen).pack()
+
+def show_main_menu(username):
+    clear_window()
+    tk.Label(root, text=f"Welcome {username}!").pack()
+    tk.Button(root, text="Check Balance", command=lambda: handle_balance(username)).pack()
+    tk.Button(root, text="Deposit", command=lambda: show_transaction_screen("Deposit", username, handle_deposit)).pack()
+    tk.Button(root, text="Withdraw", command=lambda: show_transaction_screen("Withdraw", username, handle_withdraw)).pack()
+    tk.Button(root, text="Logout", command=show_initial_screen).pack()
+
+def show_transaction_screen(action, username, handler):
+    clear_window()
+    tk.Label(root, text=f"{action} Cash").pack()
+    global entry_amount
+    entry_amount = create_entry("Amount")
+    tk.Button(root, text=action, command=lambda: handler(username)).pack()
+    tk.Button(root, text="Back", command=lambda: show_main_menu(username)).pack()
+
+
+def clear_window():
+    for widget in root.winfo_children():
+        widget.destroy()
+
+def create_entry(label_text, **kwargs):
+    tk.Label(root, text=label_text).pack()
+    entry = tk.Entry(root, **kwargs)
+    entry.pack()
+    return entry
+
+def show_initial_screen():
+    clear_window()
+    tk.Label(root, text="Login or Signup?").pack()
+    tk.Button(root, text="Signup", command=show_signup).pack()
+    tk.Button(root, text="Login", command=show_login).pack()
+
+
+show_initial_screen()
+
+root.mainloop()
