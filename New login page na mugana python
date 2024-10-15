@@ -65,3 +65,274 @@ if choice2 == "withdraw":
     print("Your current balance is now.. $", current_bal)
 else:
    print("Please try again..")
+
+------------------------------------------------------------------------------------------------
+
+
+import tkinter as tk
+from tkinter import messagebox, simpledialog
+import random
+
+
+users = {}
+pins = {}
+current_bal = 0
+
+
+def sign_up():
+    username = entry_signup_username.get()
+    password = entry_signup_password.get()
+    confirm_password = entry_confirm_password.get()
+    
+    if password == confirm_password:
+        users[username] = password
+        pins[username] = None 
+        messagebox.showinfo("Success", "Account created! Please log in.")
+        show_login()
+    else:
+        messagebox.showerror("Error", "Passwords do not match!")
+
+def log_in():
+    username = entry_login_username.get()
+    password = entry_login_password.get()
+    
+    if username in users and users[username] == password:
+        if pins[username]:  
+
+            pin_input = simpledialog.askstring("PIN Verification", "Enter your 4-digit PIN:")
+            if pin_input == pins[username]:
+                messagebox.showinfo("Success", "Access granted!")
+                main_menu(username)
+            else:
+                messagebox.showerror("Error", "Incorrect PIN.")
+        else:
+            messagebox.showinfo("Success", f"Welcome, {username}!")
+            main_menu(username)
+    else:
+        messagebox.showerror("Error", "Invalid username or password!")
+
+def pin(username):
+    pin = str(random.randint(1000, 9999))
+    pins[username] = pin
+    messagebox.showinfo("PIN Generated", f"Your PIN is: {pin}")
+
+
+def check_balance(username):
+    messagebox.showinfo("Balance", f"Current balance: ${current_bal}")
+    main_menu(username)
+
+def deposit(username):
+    global current_bal
+    amount = simpledialog.askinteger("Deposit", "Enter amount:")
+    if amount:
+        current_bal += amount
+        messagebox.showinfo("Success", f"${amount} deposited. New balance: ${current_bal}")
+    main_menu(username)
+
+def withdraw(username):
+    global current_bal
+    amount = simpledialog.askinteger("Withdraw", "Enter amount:")
+    if amount and amount <= current_bal:
+        current_bal -= amount
+        messagebox.showinfo("Success", f"${amount} withdrawn. New balance: ${current_bal}")
+    else:
+        messagebox.showerror("Error", "Insufficient balance.")
+    main_menu(username)
+
+
+root = tk.Tk() 
+root.title("Login or Signup") 
+root.geometry("400x400") 
+
+
+
+
+def show_signup(): 
+    clear_window()
+    global entry_signup_username, entry_signup_password, entry_confirm_password
+    tk.Label(root, text="Signup").pack()
+    entry_signup_username = tk.Entry(root)
+    entry_signup_password = tk.Entry(root, show="*")
+    entry_confirm_password = tk.Entry(root, show="*")
+    entry_signup_username.pack()
+    entry_signup_password.pack()
+    entry_confirm_password.pack()
+    tk.Button(root, text="Create Account", command=sign_up).pack()
+    tk.Button(root, text="Back", command=show_login_or_signup).pack()
+
+def show_login():
+    clear_window()
+    global entry_login_username, entry_login_password
+    tk.Label(root, text="Login").pack()
+    entry_login_username = tk.Entry(root)
+    entry_login_password = tk.Entry(root, show="*")
+    entry_login_username.pack()
+    entry_login_password.pack()
+    tk.Button(root, text="Login", command=log_in).pack()
+    tk.Button(root, text="Back", command=show_login_or_signup).pack()
+
+def main_menu(username):
+    clear_window()
+    tk.Label(root, text=f"Welcome {username}!").pack()
+    tk.Button(root, text="Check Balance", command=lambda: check_balance(username)).pack()
+    tk.Button(root, text="Deposit", command=lambda: deposit(username)).pack()
+    tk.Button(root, text="Withdraw", command=lambda: withdraw(username)).pack()
+    tk.Button(root, text="Generate PIN", command=lambda: pin(username)).pack()
+    tk.Button(root, text="Logout", command=log_out).pack()
+
+def log_out():
+    show_login_or_signup()
+
+def clear_window():
+    for widget in root.winfo_children():
+        widget.destroy()
+
+def show_login_or_signup():
+    clear_window()
+    tk.Label(root, text="Login or Signup").pack()
+    tk.Button(root, text="Signup", command=show_signup).pack()
+    tk.Button(root, text="Login", command=show_login).pack()
+
+show_login_or_signup()
+root.mainloop()
+
+
+-----------------------------------------------------------------------------------------------------
+
+
+
+
+
+import tkinter as tk
+from tkinter import messagebox, simpledialog
+import random
+
+
+users = {}
+pins = {}
+current_bal = 0
+
+def darkmode():
+    darkmode = ""
+    if darkmode == True:
+        messagebox.showinfo("Darkmode Enabled!")
+    show_login()
+
+def sign_up():
+    username = entry_signup_username.get()
+    password = entry_signup_password.get()
+    confirm_password = entry_confirm_password.get()
+    
+    if password == confirm_password:
+        users[username] = password
+        pins[username] = None 
+        messagebox.showinfo("Success", "Account created! Please log in.")
+        show_login()
+    else:
+        messagebox.showerror("Error", "Passwords do not match!")
+
+def log_in():
+    username = entry_login_username.get()
+    password = entry_login_password.get()
+    
+    if username in users and users[username] == password:
+        if pins[username]:  
+
+            pin_input = simpledialog.askstring("PIN Verification", "Enter your 4-digit PIN:")
+            if pin_input == pins[username]:
+                messagebox.showinfo("Success", "Access granted!")
+                main_menu(username)
+            else:
+                messagebox.showerror("Error", "Incorrect PIN.")
+        else:
+            messagebox.showinfo("Success", f"Welcome, {username}!")
+            main_menu(username)
+    else:
+        messagebox.showerror("Error", "Invalid username or password!")
+
+def pin(username):
+    pin = str(random.randint(1000, 9999))
+    pins[username] = pin
+    messagebox.showinfo("PIN Generated", f"Your PIN is: {pin}")
+
+
+def check_balance(username):
+    messagebox.showinfo("Balance", f"Current balance: ${current_bal}")
+    main_menu(username)
+
+def deposit(username):
+    global current_bal
+    amount = simpledialog.askinteger("Deposit", "Enter amount:")
+    if amount:
+        current_bal += amount
+        messagebox.showinfo("Success", f"${amount} deposited. New balance: ${current_bal}")
+    main_menu(username)
+
+def withdraw(username):
+    global current_bal
+    amount = simpledialog.askinteger("Withdraw", "Enter amount:")
+    if amount and amount <= current_bal:
+        current_bal -= amount
+        messagebox.showinfo("Success", f"${amount} withdrawn. New balance: ${current_bal}")
+    else:
+        messagebox.showerror("Error", "Insufficient balance.")
+    main_menu(username)
+
+
+root = tk.Tk() 
+root.title("Login or Signup") 
+root.geometry("400x400") 
+
+
+def show_signup(): 
+    clear_window()
+    global entry_signup_username, entry_signup_password, entry_confirm_password
+    tk.Label(root, text="Signup").pack()
+    entry_signup_username = tk.Entry(root)
+    entry_signup_password = tk.Entry(root, show="*")
+    entry_confirm_password = tk.Entry(root, show="*")
+    entry_signup_username.pack()
+    entry_signup_password.pack()
+    entry_confirm_password.pack()
+    tk.Button(root, text="Create Account", command=sign_up).pack()
+    tk.Button(root, text="Back", command=show_login_or_signup).pack()
+    
+
+def show_login():
+    clear_window()
+    global entry_login_username, entry_login_password
+    tk.Label(root, text="Login").pack()
+    entry_login_username = tk.Entry(root)
+    entry_login_password = tk.Entry(root, show="*")
+    entry_login_username.pack()
+    entry_login_password.pack()
+    tk.Button(root, text="Login", command=log_in).pack()
+    tk.Button(root, text="Back", command=show_login_or_signup).pack()
+    
+    
+
+def main_menu(username):
+    clear_window()
+    tk.Label(root, text=f"Welcome {username}!").pack()
+    tk.Button(root, text="Check Balance", command=lambda: check_balance(username)).pack()
+    tk.Button(root, text="Deposit", command=lambda: deposit(username)).pack()
+    tk.Button(root, text="Withdraw", command=lambda: withdraw(username)).pack()
+    tk.Button(root, text="Generate PIN", command=lambda: pin(username)).pack()
+    tk.Button(root, text="Logout", command=log_out).pack()
+
+def log_out():
+    show_login_or_signup()
+
+def clear_window():
+    for widget in root.winfo_children():
+        widget.destroy()
+
+def show_login_or_signup():
+    clear_window()
+    tk.Label(root, text="Login or Signup").pack()
+    tk.Button(root, text="Signup", command=show_signup).pack()
+    tk.Button(root, text="Login", command=show_login).pack()
+    tk.Button(root, text="Dark Mode", command=darkmode).pack()
+
+show_login_or_signup()
+root.mainloop()
