@@ -86,3 +86,82 @@ while True:
         print("Incorrect username or password. Please try again.")
 
 ---------------------------- Banking System v0.3 by shimz ------------------------------------------
+
+current_bal = 0
+user_pin = None
+user_name = None
+
+while True:
+    choose = input("Login or Signup? ")
+
+    if choose == "signup":
+        sign_up_username = input("Enter username: ")
+        sign_up_password = input("Enter password: ")
+        confirm_password = input("Confirm password: ")
+        if confirm_password == sign_up_password:
+            print("Account created! Please log in.")
+        else:
+            print("Passwords do not match.")
+            continue
+
+    elif choose == "login":
+        if not 'sign_up_username' in locals():
+            print("No account found. Please sign up first.")
+            continue
+        login_user = input("Enter username: ")
+        login_password = input("Enter password: ")
+        if user_pin:
+            entered_pin = input("Enter your PIN: ")
+            if entered_pin != user_pin:
+                print("Incorrect PIN.")
+                continue
+    else:
+        print("Invalid option.")
+        continue
+
+    if login_user == sign_up_username and login_password == sign_up_password:
+        while True:
+            print("--------- G Cash cuz yez -----------")
+            print("1. User Profile ")
+            print("2. Check Balance ")
+            print("3. Deposit Cash ")
+            print("4. Withdraw Cash")
+            print("5. Set/Update PIN")
+            choice = input("Choose an option: ")
+
+            if choice == "1":
+                if user_name: print("Name:", user_name)
+                else: print("Name: Not set")
+                if input("Edit name? (y/n): ") == "y":
+                    user_name = input("Enter new name: ")
+                if input("Log out? (y/n): ") == "y":
+                    print("Logged out.")
+                    break
+
+            elif choice == "2":
+                print("Balance: $", current_bal)
+
+            elif choice == "3":
+                current_bal += int(input("Deposit amount: $"))
+                print("New balance: $", current_bal)
+
+            elif choice == "4":
+                withdraw = int(input("Withdraw amount: $"))
+                if withdraw <= current_bal:
+                    current_bal -= withdraw
+                    print("New balance: $", current_bal)
+                else:
+                    print("Insufficient balance.")
+
+            elif choice == "5":
+                if user_pin is None:
+                    user_pin = input("Set your 4-digit PIN: ")
+                elif input("Update PIN? (y/n): ") == "y":
+                    user_pin = input("Enter new 4-digit PIN: ")
+
+            else:
+                print("Invalid choice.")
+    else:
+        print("Incorrect username or password.")
+
+------------------ Banking System by shimz v0.4 -----------------------------------
