@@ -1,0 +1,90 @@
+current_bal = 0
+user_pin = 0  
+
+while True: 
+
+    print("Login or Signup?") # kabalo namo ani
+    choose = input("Please Choose: ")
+
+    if choose == "signup": # if sign up option
+        sign_up_username = input("Please enter your preferred username: ")
+        sign_up_password = input("Please enter your Password: ")
+        confirm_password = input("Please confirm your Password: ") # kabalo namo ani
+
+        if confirm_password == sign_up_password:
+            print("Account Created Successfully!") #if mao ang pass og username mo balik sya sa login or signup pero naka save na imong gi input sa signup
+            print("Please log in to your account.")
+        else:
+            print("Passwords do not match. Please try again.") # if dili mao ang password mubalik sya sa login or signup na option
+            continue  
+
+    elif choose == "login":
+        if not 'sign_up_username' in locals():
+            print("You don't have an account yet.. Please create a new account to continue!") # if nag pili kas login pero wala ka create og account then balik sa login page
+            continue  
+        else:
+            login_user = input("Please enter your username: ")  # if nag log out ang user then nag choose og login option mag input sya sa iyang previous na user og pass pero with pin na sya(if naka set up kag pin)
+            login_password = input("Please enter your Password: ")
+            if user_pin is not None: # if naay pin ang user then proceed syag request saimong gi input na pin
+                entered_pin = input("Enter your 4-digit PIN: ")
+                if entered_pin != user_pin:
+                    print("Incorrect PIN. Please try again.") # kabalo namo ani
+                    continue  
+
+    else:
+        print("Invalid option. Please try again.") # balik sya
+        continue  
+
+    if login_user == sign_up_username and login_password == sign_up_password:
+        while True:  # loop sya pag true
+            print("--------- G Cash cuz yez -----------")
+            print("1. User Profile ")
+            print("2. Check Balance ")
+            print("3. Deposit Cash ")
+            print("4. Withdraw Cash")
+            print("5. Set/Update PIN")
+            print("6. Log out ")
+
+            choice = input("Please choose an option: ") #kabalo namo ani
+
+            if choice == "1":
+                print("--------", login_user, "--------") #if option 1 magchange kas credentials nimo
+                print("Credentials:")
+                print("Name: ")
+
+            elif choice == "2":
+                print("Your Current balance is.. $", current_bal) # 0 ang na assign since bag o man sya nahimo na account
+
+            elif choice == "3":
+                depo = int(input("How much cash do you want to deposit?: $")) #mag add raman so kabalo namo
+                current_bal += depo
+                print("$", depo, "has been added to your account. Your balance is now.. $", current_bal)
+
+            elif choice == "4":
+                withdraw = int(input("How much do you want to withdraw?: $")) #check if na add inyong gi deposit 
+                if withdraw <= current_bal:
+                    current_bal -= withdraw
+                    print("You withdrew $", withdraw, ". Your current balance is now.. $", current_bal)
+                else:
+                    print("Insufficient balance.")
+
+            elif choice == "5": # mag assign og pin(Parihas ranis "if confirm_password == password: na code so kabalo namo ani")
+                if user_pin is None:
+                    user_pin = input("Set your 4-digit PIN: ")
+                    print("PIN has been set successfully!")
+                else:
+                    update_pin = input("You already have a PIN. Do you want to update it? (y/n): ") #wala nanako gi add ang no kay kapoy
+                    if update_pin == "y":
+                        user_pin = input("Enter your new 4-digit PIN: ")
+                        print("PIN updated successfully!")
+
+            elif choice == "6":
+                print("You have logged out.") #since true man so balik mos sinug danan
+                break  #dili na sya mu proceed sa dashboard
+            else:
+                print("Invalid choice. Please try again.") #kabalo namo ani
+    else:
+        print("Incorrect username or password. Please try again.")
+
+
+---------------------------- Banking System v0.3 by shimz ------------------------------------------
