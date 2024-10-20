@@ -1,5 +1,5 @@
 current_bal = 0
-user_pin = 0  
+user_pin = None  
 
 while True: 
 
@@ -30,7 +30,6 @@ while True:
                 if entered_pin != user_pin:
                     print("Incorrect PIN. Please try again.") # kabalo namo ani
                     continue  
-
     else:
         print("Invalid option. Please try again.") # balik sya
         continue  
@@ -85,6 +84,5 @@ while True:
                 print("Invalid choice. Please try again.") #kabalo namo ani
     else:
         print("Incorrect username or password. Please try again.")
-
 
 ---------------------------- Banking System v0.3 by shimz ------------------------------------------
