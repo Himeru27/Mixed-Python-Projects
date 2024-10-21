@@ -165,3 +165,139 @@ while True:
         print("Incorrect username or password.")
 
 ------------------ Banking System by shimz v0.4 -----------------------------------
+
+
+current_bal = 0
+user_pin = None
+user_name = None
+users = {}  # Dictionary to store all user accounts
+admin_user = "admin"
+admin_pass = "admin123"
+
+while True:
+    choose = input("Login, Signup, or Admin Login? ")
+
+    if choose == "signup":
+        sign_up_username = input("Enter username: ")
+        sign_up_password = input("Enter password: ")
+        confirm_password = input("Confirm password: ")
+        if confirm_password == sign_up_password:
+            users[sign_up_username] = {
+                'password': sign_up_password,
+                'balance': 0,
+                'pin': None,
+                'name': None
+            }
+            print("Account created! Please log in.")
+        else:
+            print("Passwords do not match.")
+            continue
+
+    elif choose == "login":
+        if not users:
+            print("No account found. Please sign up first.")
+            continue
+        login_user = input("Enter username: ")
+        login_password = input("Enter password: ")
+        if login_user in users and login_password == users[login_user]['password']:
+            user_name = users[login_user]['name']
+            current_bal = users[login_user]['balance']
+            user_pin = users[login_user]['pin']
+
+            if user_pin:
+                entered_pin = input("Enter your PIN: ")
+                if entered_pin != user_pin:
+                    print("Incorrect PIN.")
+                    continue
+
+            while True:
+                print("--------- G Cash cuz yez -----------")
+                print("1. User Profile ")
+                print("2. Check Balance ")
+                print("3. Deposit Cash ")
+                print("4. Withdraw Cash")
+                print("5. Set/Update PIN")
+                print("6. Log out")
+                choice = input("Choose an option: ")
+
+                if choice == "1":
+                    if user_name: print("Name:", user_name)
+                    else: print("Name: Not set")
+                    if input("Edit name? (y/n): ") == "y":
+                        user_name = input("Enter new name: ")
+                        users[login_user]['name'] = user_name
+
+                elif choice == "2":
+                    print("Balance: $", current_bal)
+
+                elif choice == "3":
+                    current_bal += int(input("Deposit amount: $"))
+                    print("New balance: $", current_bal)
+                    users[login_user]['balance'] = current_bal
+
+                elif choice == "4":
+                    withdraw = int(input("Withdraw amount: $"))
+                    if withdraw <= current_bal:
+                        current_bal -= withdraw
+                        print("New balance: $", current_bal)
+                        users[login_user]['balance'] = current_bal
+                    else:
+                        print("Insufficient balance.")
+
+                elif choice == "5":
+                    if user_pin is None:
+                        user_pin = input("Set your 4-digit PIN: ")
+                    elif input("Update PIN? (y/n): ") == "y":
+                        user_pin = input("Enter new 4-digit PIN: ")
+                    users[login_user]['pin'] = user_pin
+
+                elif choice == "6":
+                    print("Logged out.")
+                    break
+
+                else:
+                    print("Invalid choice.")
+        else:
+            print("Incorrect username or password.")
+
+    elif choose == "Admin Login":
+        admin_username = input("Enter admin username: ")
+        admin_password = input("Enter admin password: ")
+
+        if admin_username == admin_user and admin_password == admin_pass:
+            while True:
+                print("--------- Admin Panel -----------")
+                print("1. View All Users")
+                print("2. Delete User")
+                print("3. Log out")
+                admin_choice = input("Choose an option: ")
+
+                if admin_choice == "1":
+                    if users:
+                        print("Registered Users:")
+                        for user in users:
+                            print(f"Username: {user}, Name: {users[user]['name']}, Balance: ${users[user]['balance']}")
+                    else:
+                        print("No users found.")
+
+                elif admin_choice == "2":
+                    delete_user = input("Enter the username to delete: ")
+                    if delete_user in users:
+                        del users[delete_user]
+                        print(f"User {delete_user} has been deleted.")
+                    else:
+                        print("User not found.")
+
+                elif admin_choice == "3":
+                    print("Logged out of admin.")
+                    break
+
+                else:
+                    print("Invalid choice.")
+        else:
+            print("Incorrect admin username or password.")
+
+    else:
+        print("Invalid option.")
+
+------------------------- Banking System v0.5 --------------------------------------------------
