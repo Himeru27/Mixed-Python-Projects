@@ -157,6 +157,8 @@ def user_prof():
         
     if input("Log out? (y/n): ") == "y":
         print("Logged out.")
+        global running 
+        running = False
 
 def pin():
     global pin_code
@@ -189,6 +191,12 @@ def login_page():
     login_password = input("Please enter your password: ")
     
     if login_username == signup_username and login_password == signup_password:
+        if pin_code:
+            entered_pin = input("Enter your PIN: ")
+            if entered_pin != pin_code:
+                print("Incorrect PIN.")
+                return 
+
         print("Login Successful!")
         while running:
             print("--------- G Cash cuz why not -----------")
@@ -197,7 +205,6 @@ def login_page():
             print("3. Deposit Cash")
             print("4. Withdraw Cash")
             print("5. Set or Update PIN")
-            print("6. Logout")
             choice = input("Choose an option: ")
 
             if choice == "1":
@@ -210,9 +217,6 @@ def login_page():
                 withdraw()
             elif choice == "5":
                 pin()
-            elif choice == "6":
-                print("Logging out...")
-                running = False 
             else:
                 print("Please input a valid choice.")
     else:
@@ -242,5 +246,6 @@ while True:
         break
     else:
         print("Please select a valid option.")
+
 
 ------------------------------ Admin but more Organized --------------------------------------------
