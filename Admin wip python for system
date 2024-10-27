@@ -124,3 +124,123 @@ while True:
         print("Invalid option.")
 
 ------------------------- admin -----------------------------
+
+
+
+def check_bal():
+    print("Your current balance is..", balance)
+    pass
+
+def withdraw():
+    global balance
+    withdraw_amount = int(input("Withdraw amount: $"))
+    if withdraw_amount <= balance:
+        balance -= withdraw_amount
+        print("New balance: $", balance)
+    else:
+        print("Insufficient balance.")
+    pass
+
+def deposit():
+    global balance 
+    balance += int(input("Deposit amount: $"))
+    print("New balance: $", balance)
+    pass
+
+def user_prof():
+    global user_name
+    print("Name:", user_name if user_name else "Not set")
+    
+    if input("Edit name? (y/n): ") == "y":
+        user_name = input("Enter new name: ")
+        print("Name has been updated to:", user_name)
+        
+    if input("Log out? (y/n): ") == "y":
+        print("Logged out.")
+
+def pin():
+    global pin_code
+    if pin_code is None:
+        pin_code = input("Set your 4-digit PIN: ")
+        print("PIN set successfully.")
+    elif input("Update PIN? (y/n): ") == "y":
+        pin_code = input("Enter new 4-digit PIN: ")
+        print("PIN updated successfully.")
+    else:
+        print("No changes have been made.")
+    pass
+
+def signup_page():
+    global signup_username
+    global signup_password
+    signup_username = input("Please enter your username: ")
+    signup_password = input("Please enter your password: ")
+    confirm_password = input("Confirm your password: ")
+    
+    if confirm_password == signup_password:
+        print("Signup Successful! You can now log in.")
+    else:
+        print("Passwords do not match. Please try again.")
+        
+def login_page():
+    global running 
+    
+    login_username = input("Please enter your username: ")
+    login_password = input("Please enter your password: ")
+    
+    if login_username == signup_username and login_password == signup_password:
+        print("Login Successful!")
+        while running:
+            print("--------- G Cash cuz why not -----------")
+            print("1. User Profile")
+            print("2. Check Balance")
+            print("3. Deposit Cash")
+            print("4. Withdraw Cash")
+            print("5. Set or Update PIN")
+            print("6. Logout")
+            choice = input("Choose an option: ")
+
+            if choice == "1":
+                user_prof()
+            elif choice == "2":
+                check_bal()
+            elif choice == "3":
+                deposit()
+            elif choice == "4":
+                withdraw()
+            elif choice == "5":
+                pin()
+            elif choice == "6":
+                print("Logging out...")
+                running = False 
+            else:
+                print("Please input a valid choice.")
+    else:
+        print("Invalid login credentials. Please try again.")
+
+
+balance = 0
+running = True
+user_name = ""
+pin_code = None
+signup_username = ""
+signup_password = ""
+
+print("--- Welcome to G Cash! --- ")
+
+while True:
+    main_choose = input("Do you want to signup or login?: ")
+
+    if main_choose == "signup":
+        signup_page()
+    elif main_choose == "login":
+        login_page()
+        if running is False: 
+            running = True  
+    elif main_choose == "exit":
+        print("Goodbye!")
+        break
+    else:
+        print("Please select a valid option.")
+
+------------------------------ Admin but more Organized --------------------------------------------
