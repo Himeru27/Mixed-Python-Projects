@@ -249,3 +249,132 @@ while True:
 
 
 ------------------------------ Admin but more Organized --------------------------------------------
+
+
+current_bal = 0
+user_pin = None #global gihapon
+user_name = None
+sign_up_username = None #Globally nani sya
+sign_up_password = None #Globally
+admin_username = "admin" #Default nani na admin account naka lowercase
+admin_password = "admin123"
+
+while True:
+    choose = input("Login or Signup?: ").lower() # Always nani lowercased
+    if choose == "signup": #signup na part
+        if sign_up_username:
+            print("This account had already exist. Please log in.") #if naka create nakag acc na naay same username
+        else:
+            sign_up_username = input("Enter username: ") #signup sa user
+            sign_up_password = input("Enter password: ") #sign up na password
+            confirm_password = input("Confirm password: ") #confirm after input sa signup password
+            if confirm_password == sign_up_password: # if mag equal ang gi input nimo na password sa confirm pass
+                print("Account created! Please log in.")
+            else:
+                print("Passwords do not match.") #if mali or dili mag match ang pass
+                continue #balik sa signup/login prompt
+
+    elif choose == "login": # ayha ra mag input ani na choice if naka himo nakag acc
+        if sign_up_username is None: #global nani since "None" meaning dili sya mag exist if wala paka naka himo
+            print("No user account found. Please sign up first.") #if nag attempt kag login without signing up
+            continue # back sa login/signup page
+
+        login_user = input("Enter username: ") #kabalo namo ani
+        login_password = input("Enter password: ")
+
+        if login_user == sign_up_username and login_password == sign_up_password: #if mag equal ang gi input nimo na password sa confirm pass pati username
+            if user_pin: #ayha ra mangayo og pin if nag assign ang user og pin
+                entered_pin = input("Enter your PIN: ") # enter sa gi assign nimo na pin    
+                if entered_pin != user_pin: # if ang gi enter nimo pin kay dili nag equal sa gi assign nimo na pin
+                    print("Incorrect PIN.") #if mali
+                    continue #proceed sya sa login/signup page
+
+            while True: #proceed sya sa dashbaord/menu
+                print("--------- G Cash cuz why not -----------")
+                print("1. User Profile")
+                print("2. Check Balance") #wala ni syay function pero mag display ra sya sa selection sa user sa menu
+                print("3. Deposit Cash")
+                print("4. Withdraw Cash")
+                print("5. Set or Update PIN")
+                choice = input("Choose an option: ") # choice ni user
+
+                if choice == "1": #if 1 iyang choice then mag proceed sya sa profile sa user
+                    print("Name:", user_name if user_name else "Not set") #if wala pa na set sa user then mag ask ang system if gusto ba sa user na mag input og username
+                    if input("Edit name? (y/n): ") == "y": # if mag yes then mag input ang user og username na bag o(dili ni sya ma change iyang username pero ang display ra sa iyang profile para chuy :>)
+                        user_name = input("Enter new name: ") #input username
+                    if input("Log out? (y/n): ") == "y": # if yes then mag logout ang user
+                        print("Logged out.")
+                        break #logout tas balik sa login / signup na page
+
+                elif choice == "2": # if 2 then mag check sya sa balance
+                    print("Balance: $", current_bal) #check balance globally
+
+                elif choice == "3": # if 3 then mag input ang user og pila iyang e deposit na cash
+                    current_bal += int(input("Deposit amount: $"))
+                    print("New balance: $", current_bal) # after ma add ang cur_balance sa imong gi input ma add na sya globally
+
+                elif choice == "4": # if 4 then mag input ang user og pila iyang e withdraw
+                    withdraw = int(input("Withdraw amount: $")) # process niya
+                    if withdraw <= current_bal: # if withdraw is less than current balance then mag insufficient sya
+                        current_bal -= withdraw #if mag input ang user og 
+                        print("New balance: $", current_bal) #mag display sa new balance na na withdraw nimo
+                    else:
+                        print("Insufficient balance.")
+
+                elif choice == "5":
+                    if user_pin is None:
+                        user_pin = input("Set your 4-digit PIN: ")
+                    elif input("Update PIN? (y/n): ") == "y":
+                        user_pin = input("Enter new 4-digit PIN: ")
+
+                else:
+                    print("Invalid choice.")
+
+        elif login_user == admin_username and login_password == admin_password:
+            while True:
+                print("--------- Admin Cuz ngano dili -----------")
+                print("1. View User Profile")
+                print("2. Delete User Account")
+                print("3. Log Out")
+                print("========================")
+                admin_choice = input("Choose an option: ")
+
+                if admin_choice == "1":
+                    if sign_up_username:
+                        print(f"Username: {sign_up_username}")
+                        print(f"Name: {user_name if user_name else 'Not set'}")
+                        print(f"Balance: ${current_bal}")
+                    else:
+                        print("No user account found.")
+
+                elif admin_choice == "2":
+                    if sign_up_username:
+                        confirm = input(f"Are you sure you want to delete user {sign_up_username}? (y/n): ")
+                        if confirm == "y":
+                            sign_up_username = None
+                            sign_up_password = None
+                            user_name = None
+                            current_bal = 0
+                            user_pin = None
+                            print("User account deleted.")
+                    else:
+                        print("No user account to delete.")
+
+                elif admin_choice == "3":
+                    print("Admin logged out.")
+                    break
+
+                else:
+                    print("Invalid option.")
+
+        else:
+            print("Incorrect username or password.")
+
+    elif choose == "exit":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option.")
+
+----------------------------- Admin 2.0 ----------------------------------------------------
