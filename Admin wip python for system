@@ -38,7 +38,7 @@ while True:
 
             while True:
                 print("--------- G Cash cuz why not -----------")
-                print("1. User Profile")
+                print("1. User Profile") 
                 print("2. Check Balance")
                 print("3. Deposit Cash")
                 print("4. Withdraw Cash")
@@ -251,9 +251,9 @@ while True:
 ------------------------------ Admin but more Organized --------------------------------------------
 
 
-current_bal = 0
+current_bal = 0 # set ang balance to 0 kay new account man
 user_pin = None #global gihapon
-user_name = None
+user_name = None # means if executed wala pay user ang mag exist since new man sya
 sign_up_username = None #Globally nani sya
 sign_up_password = None #Globally
 admin_username = "admin" #Default nani na admin account naka lowercase
@@ -319,62 +319,65 @@ while True:
                         current_bal -= withdraw #if mag input ang user og 
                         print("New balance: $", current_bal) #mag display sa new balance na na withdraw nimo
                     else:
-                        print("Insufficient balance.")
+                        print("Insufficient balance.") # if below 0 ang balance
 
-                elif choice == "5":
-                    if user_pin is None:
-                        user_pin = input("Set your 4-digit PIN: ")
-                    elif input("Update PIN? (y/n): ") == "y":
+                elif choice == "5": # if number 5 then mag assign og pin
+                    if user_pin is None: # if walay pin
+                        user_pin = input("Set your 4-digit PIN: ") #mag ask kay user og pin 
+                    elif input("Update PIN? (y/n): ") == "y": # if yen then ma save sya or update
                         user_pin = input("Enter new 4-digit PIN: ")
 
                 else:
-                    print("Invalid choice.")
+                    print("Invalid choice.") # if lain ang ma input then invalid ang ma print
 
-        elif login_user == admin_username and login_password == admin_password:
-            while True:
+        elif login_user == admin_username and login_password == admin_password: # if nakas login page then mag match ang login user nimo og password sa user & pass sa admin then mu proceed sya sa interface ni admin(need naay existing account para ma access si admin)
+            while True: #loop ang interface
                 print("--------- Admin Cuz ngano dili -----------")
                 print("1. View User Profile")
-                print("2. Delete User Account")
+                print("2. Delete User Account") #print rani sa choices
                 print("3. Log Out")
                 print("========================")
-                admin_choice = input("Choose an option: ")
+                admin_choice = input("Choose an option: ") # choices ni admin
 
-                if admin_choice == "1":
-                    if sign_up_username:
-                        print(f"Username: {sign_up_username}")
-                        print(f"Name: {user_name if user_name else 'Not set'}")
-                        print(f"Balance: ${current_bal}")
+                if admin_choice == "1": # if 1 then mag show sya sa existing na account na nahimo 
+                    if sign_up_username: 
+                        print(f"Username: {sign_up_username}") # Show sya sa username sa taas
+                        print(f"Name: {user_name if user_name else 'Not set'}") 
+                        print(f"Balance: ${current_bal}") #current balance sa user(dili admin)
                     else:
-                        print("No user account found.")
+                        print("No user account found.") #if walay account then walay ma display instead kani na msg ang ma print
 
-                elif admin_choice == "2":
+                elif admin_choice == "2": # if 2 then proceed sya sa delete interface
                     if sign_up_username:
-                        confirm = input(f"Are you sure you want to delete user {sign_up_username}? (y/n): ")
-                        if confirm == "y":
-                            sign_up_username = None
-                            sign_up_password = None
-                            user_name = None
-                            current_bal = 0
-                            user_pin = None
-                            print("User account deleted.")
+                        confirm = input(f"Are you sure you want to delete user {sign_up_username}? (y/n): ") # if yen then ma delete ang existing user na gihimo nimo previously
+                        if confirm == "y": # if confirm then deleted
+                            sign_up_username = None # ma change ang existing na username to none
+                            sign_up_password = None # ma change ang existing na password to none
+                            user_name = None # change ang user(sa profile) to none if nag assign si user saiyang account username sa profile niya
+                            current_bal = 0 # iyang balance ma reset to 0
+                            user_pin = None # reset ang pin to none
+                            print("User account deleted.") #print msg na nadelete na ang account sa user
                     else:
-                        print("No user account to delete.")
+                        print("No user account to delete.") #if walay account na nag exist then mu gawas ni na msg
 
-                elif admin_choice == "3":
-                    print("Admin logged out.")
-                    break
+                elif admin_choice == "3": #if 3 then ma logout ang account ni admin then back dayon sya sa loop(login loop page)
+                    print("Admin logged out.")  #msg confirmation na nalog out na gyud si admin
+                    break #means dili na makabalik sa interface ni admin
 
                 else:
-                    print("Invalid option.")
+                    print("Invalid option.") #if wala sa choices then kani ang ma print
 
         else:
-            print("Incorrect username or password.")
+            print("Incorrect username or password.") # if dili mao ang account user or password then back sya sa login page
 
-    elif choose == "exit":
-        print("Goodbye!")
-        break
+    elif choose == "exit": # if exit kay mu turn off ang system
+        print("Goodbye!") # message before ma turn off
+        break #ma wad an anakag access sa system
 
     else:
-        print("Invalid option.")
+        print("Invalid option.") #mag prompt ni na message kung wala sa choices imong gi input
+
+# walay changes nahitabo since nag comment raman ko diri :>
+#gl sa defense!
 
 ----------------------------- Admin 2.0 ----------------------------------------------------
