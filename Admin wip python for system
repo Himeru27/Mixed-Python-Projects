@@ -381,3 +381,293 @@ while True:
 #gl sa defense!
 
 ----------------------------- Admin 2.0 ----------------------------------------------------
+
+
+current_bal = {} 
+user_pins = {}       
+user_names = {}       
+users = {} 
+admin_username = "admin"
+admin_password = "admin123"
+signup_char = "!@#$%^&*(),.?\":{}|<>"
+
+while True:
+    choose = input("Login or Signup?: ").lower()
+    if choose == "signup":
+        username = input("Enter username: ")
+        if username in users:
+            print("This account already exists. Please log in.")
+        else:
+            password = input("Enter password: ")
+            if not any(char in signup_char for char in password):
+                print("Password must contain at least one special symbol.")
+                continue
+            confirm_password = input("Confirm password: ")
+            if confirm_password == password:
+                users[username] = password
+                current_bal[username] = 0
+                user_names[username] = None
+                user_pins[username] = None
+                print("Account created! Please log in.")
+            else:
+                print("Passwords do not match.")
+                continue
+
+    elif choose == "login":
+        login_user = input("Enter username: ")
+        login_password = input("Enter password: ")
+
+        if login_user in users and users[login_user] == login_password:
+
+          
+            while True:
+                if user_pins[login_user]:
+                    entered_pin = input("Enter your PIN: ")
+                    if entered_pin != user_pins[login_user]:
+                        print("Incorrect PIN.")
+                        continue
+
+                print("|---------------------------------------|")
+                print("|-------- G Cash cuz why not -----------|")
+                print("|-------------------|-------------------|")
+                print("|      Option       |     Selection     |")
+                print("|-------------------|-------------------|")
+                print("|         1         |   User Profile    |")
+                print("|         2         |   Check Balance   |")
+                print("|         3         |   Deposit Cash    |")
+                print("|         4         |   Withdraw Cash   |")
+                print("|         5         | Set or Update PIN |")
+                print("|---------------------------------------|")
+                choice = input("Choose an option: ")
+
+                if choice == "1":
+                    print("Name:", user_names[login_user] if user_names[login_user] else "Not set")
+                    if input("Edit name? (y/n): ") == "y":
+                        user_names[login_user] = input("Enter new name: ")
+                    if input("Log out? (y/n): ") == "y":
+                        print("Logged out.")
+                        break
+
+                elif choice == "2":
+                    print("Balance: $", current_bal[login_user])
+
+                elif choice == "3":
+                    deposit = int(input("Deposit amount: $"))
+                    current_bal[login_user] += deposit
+                    print("New balance: $", current_bal[login_user])
+
+                elif choice == "4":
+                    withdraw = int(input("Withdraw amount: $"))
+                    if withdraw <= current_bal[login_user]:
+                        current_bal[login_user] -= withdraw
+                        print("New balance: $", current_bal[login_user])
+                    else:
+                        print("Insufficient balance.")
+
+                elif choice == "5":
+                    if user_pins[login_user] is None:
+                        user_pins[login_user] = input("Set your 4-digit PIN: ")
+                    elif input("Update PIN? (y/n): ") == "y":
+                        user_pins[login_user] = input("Enter new 4-digit PIN: ")
+
+                else:
+                    print("Invalid choice.")
+
+        elif login_user == admin_username and login_password == admin_password:
+
+
+            while True:
+                print("|-----------Admin Cuz ngano dili-------------|")
+                print("|         1         |   View User Profiles   |")
+                print("|         2         |   Delete User Account  |")
+                print("|         3         |   Log Out              |")
+                print("|--------------------------------------------|")
+
+                admin_choice = input("Choose an option: ")
+
+                if admin_choice == "1":
+                    if users:
+                        for user in users:
+                            print("Username: ",user)
+                            print("Name:", user_names[user] if user_names[user] else "Not set")
+                            print("Balance: $",scurrent_bal[user])
+                            print("-" * 30)
+                    else:
+                        print("No user accounts found.")
+
+                elif admin_choice == "2":
+                    user_to_delete = input("Enter username to delete: ")
+                    if user_to_delete in users:
+                        confirm = input("Are you sure you want to delete user " + user_to_delete + " (y/n): ")
+                        if confirm == "y":
+                            del users[user_to_delete]
+                            del current_bal[user_to_delete]
+                            del user_names[user_to_delete]
+                            del user_pins[user_to_delete]
+                            print("User account deleted.")
+                    else:
+                        print("User account not found.")
+
+                elif admin_choice == "3":
+                    print("Admin logged out.")
+                    break
+
+                else:
+                    print("Invalid option.")
+
+        else:
+            print("Incorrect username or password.")
+
+    elif choose == "exit":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option.")
+
+
+--------------------------------- Final Nani ------------------------------------------------
+
+
+current_bal = {} 
+user_pins = {}       
+user_names = {}       
+users = {} 
+admin_username = "admin"
+admin_password = "admin123"
+signup_char = "!@#$%^&*(),.?\":{}|<>"
+
+while True:
+    choose = input("Login or Signup?: ").lower()
+    if choose == "signup":
+        username = input("Enter username: ")
+        if username in users:
+            print("This account already exists. Please log in.")
+        else:
+            password = input("Enter password: ")
+            if not any(char in signup_char for char in password):
+                print("Password must contain at least one special symbol.")
+                continue
+            confirm_password = input("Confirm password: ")
+            if confirm_password == password:
+                users[username] = password
+                current_bal[username] = 0
+                user_names[username] = None
+                user_pins[username] = None
+                print("Account created! Please log in.")
+            else:
+                print("Passwords do not match.")
+                continue
+
+    elif choose == "login":
+        login_user = input("Enter username: ")
+        login_password = input("Enter password: ")
+
+        if login_user in users and users[login_user] == login_password:
+
+          
+            while True:
+                if user_pins[login_user]:
+                    entered_pin = input("Enter your PIN: ")
+                    if entered_pin != user_pins[login_user]:
+                        print("Incorrect PIN.")
+                        continue
+
+                print("|---------------------------------------|")
+                print("|-------- G Cash cuz why not -----------|")
+                print("|-------------------|-------------------|")
+                print("|      Option       |     Selection     |")
+                print("|-------------------|-------------------|")
+                print("|         1         |   User Profile    |")
+                print("|         2         |   Check Balance   |")
+                print("|         3         |   Deposit Cash    |")
+                print("|         4         |   Withdraw Cash   |")
+                print("|         5         | Set or Update PIN |")
+                print("|---------------------------------------|")
+                choice = input("Choose an option: ")
+
+                if choice == "1":
+                    print("Name:", user_names[login_user] if user_names[login_user] else "Not set")
+                    if input("Edit name? (y/n): ") == "y":
+                        user_names[login_user] = input("Enter new name: ")
+                    if input("Log out? (y/n): ") == "y":
+                        print("Logged out.")
+                        break
+
+                elif choice == "2":
+                    print("Balance: $", current_bal[login_user])
+
+                elif choice == "3":
+                    deposit = int(input("Deposit amount: $"))
+                    current_bal[login_user] += deposit
+                    print("New balance: $", current_bal[login_user])
+
+                elif choice == "4":
+                    withdraw = int(input("Withdraw amount: $"))
+                    if withdraw <= current_bal[login_user]:
+                        current_bal[login_user] -= withdraw
+                        print("New balance: $", current_bal[login_user])
+                    else:
+                        print("Insufficient balance.")
+
+                elif choice == "5":
+                    if user_pins[login_user] is None:
+                        user_pins[login_user] = input("Set your 4-digit PIN: ")
+                    elif input("Update PIN? (y/n): ") == "y":
+                        user_pins[login_user] = input("Enter new 4-digit PIN: ")
+
+                else:
+                    print("Invalid choice.")
+
+        elif login_user == admin_username and login_password == admin_password:
+
+
+            while True:
+                print("|-----------Admin Cuz ngano dili-------------|")
+                print("|         1         |   View User Profiles   |")
+                print("|         2         |   Delete User Account  |")
+                print("|         3         |   Log Out              |")
+                print("|--------------------------------------------|")
+
+                admin_choice = input("Choose an option: ")
+
+                if admin_choice == "1":
+                    if users:
+                        for user in users:
+                            print("Username: ",user)
+                            print("Name:", user_names[user] if user_names[user] else "Not set")
+                            print("Balance: $",scurrent_bal[user])
+                            print("-" * 30)
+                    else:
+                        print("No user accounts found.")
+
+                elif admin_choice == "2":
+                    user_to_delete = input("Enter username to delete: ")
+                    if user_to_delete in users:
+                        confirm = input("Are you sure you want to delete user " + user_to_delete + " (y/n): ")
+                        if confirm == "y":
+                            del users[user_to_delete]
+                            del current_bal[user_to_delete]
+                            del user_names[user_to_delete]
+                            del user_pins[user_to_delete]
+                            print("User account deleted.")
+                    else:
+                        print("User account not found.")
+
+                elif admin_choice == "3":
+                    print("Admin logged out.")
+                    break
+
+                else:
+                    print("Invalid option.")
+
+        else:
+            print("Incorrect username or password.")
+
+    elif choose == "exit":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option.")
+
