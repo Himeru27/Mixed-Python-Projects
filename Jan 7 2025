@@ -1,0 +1,73 @@
+
+
+import java.util.Scanner;
+public class newss {
+
+    public static void main(String[] args) {
+        
+        int num1, num2;
+        Scanner cuzyes = new Scanner(System.in);
+        System.out.println("Enter First Number: ");
+        num1 = cuzyes.nextInt();
+        
+        System.out.println("Enter Second Number: ");
+        num2 = cuzyes.nextInt();
+        
+        int sum1 = num1 + num2;
+        int sum2 = num1 - num2;
+        int sum3 = num1 * num2;
+        double sum4 = num1 % num2 + 0.5;
+
+        System.out.println("Addition of these two numbers: "+ sum1);
+        System.out.println("Subtraction of these two numbers: "+ sum2);
+        System.out.println("Multiplication of these two numbers: "+ sum3);
+        System.out.println("Remainder of these two numbers: "+ sum4);
+    }
+}
+
+------------------- Scanner/Input for calculator(JAVA) ---------------------------------
+
+
+class test2 {  
+    public static void main(String args[]){  
+        
+     int num1 = 10;
+     int num2 = 5;
+
+     int sum = num1 + num2;
+     int sum2 = num1 - num2;
+     int sum3 = num1*num2;
+     int sum4 = num1 % num2;
+
+
+     System.out.println("Addition: "+ sum);  
+     System.out.println("Subtraction: "+ sum2);  
+     System.out.println("Multiplication: "+ sum2); 
+     System.out.println("Remainder of two numbers: "+ sum2); 
+    }  
+}  
+
+
+------------------ CALC JAVA(Assigned) ------------------------------------------------------
+
+
+class test4{  
+    public static void main(String args[]){  
+
+     System.out.println("Hello Students");  
+    }  
+}  
+
+
+-------------------- Name(Assigned) -----------------------------------------------------------
+
+class test5{  
+  public static void main(String args[]){  
+      
+   System.out.println("WELCOME");  
+   System.out.println("  TO");  
+   System.out.println(" JAVA  ");  
+  }  
+}  
+
+------------------------ Welcome (assigned) ------------------------------------------------------------
