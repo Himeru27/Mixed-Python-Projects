@@ -1,0 +1,64 @@
+import java.util.Scanner;
+
+public class Finalproj {
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+ 
+        System.out.print("Enter your first number: ");
+        int n1 = scanner.nextInt();
+        System.out.print("Please enter another one: ");
+        int n2 = scanner.nextInt();
+        System.out.print("Please enter another one: ");
+        int n3 = scanner.nextInt();
+
+    
+        int largenum;
+        if (n1 >= n2 && n1 >= n3) {
+            largenum = n1;
+        } else if (n2 >= n1 && n2 >= n3) {
+            largenum = n2;
+        } else {
+            largenum = n3;
+        System.out.println("The largest number out of the three given is.. " + largenum);
+        
+        }
+    }
+}
+
+\\\ ------------------------------------------------------\\\
+
+import java.util.Scanner;
+
+public class testprint {
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int cal = scanner.nextInt(); 
+        
+        String results;
+        results = (cal % 2 == 0) ? "This number is even" : "This number is odd";
+        System.out.println(results);
+    }
+}
+
+\\\ -------------------------------- \\\
+
+import java.util.Scanner;
+
+public class Test {
+    public static void main(String[] args) {
+        
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a number: ");
+        int cal = scanner.nextInt(); 
+        
+        if (cal % 2 == 0) { 
+            System.out.println("The number " + cal + " is odd.");
+        } else {
+            System.out.println("The number " + cal + " is even.");
+        }
+    }
+}
