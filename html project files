@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .Headz{
+        font-size: 60px;
+        text-align: center;
+
+    }
+
+    .intro {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .age{
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .location {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .scam {
+        color: rgb(255, 255, 255);
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        font-size: xx-large;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        text-decoration: none;
+        background-color: rgb(60, 109, 66);
+        border-style: dotted;
+        
+    }
+    .pic {
+        color: black;
+        container: center;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        box-shadow: gray;
+        margin-left: auto;
+        margin-right: auto;
+        
+
+    }
+    .vidz {
+        color: black;
+        container: center;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        margin-top: 50px;
+        box-shadow: gray;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .Content {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+
+    }
+
+    .audios {
+        color: black;
+        container: center;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        margin-top: 50px;
+        box-shadow: gray;
+        margin-left: auto;
+        margin-right: auto;
+
+    }
+
+
+</style>
+<body>
+    <h3 class="Headz">Title: Introduce Yourself</h3>
+    <img src="IMG_20241118_115853.jpg" class="pic" alt="dame tu cosita">
+    <p class ="intro"> Hello! I am Jhoshua Christian A. Shimoyama.</p>
+    <p class ="age">I am 19 Years old.</p>
+    <p class ="location"> Currently living in Cagayan de oro!</p>
+    <p class ="Content"> I am an IT graduate with excellent qualifications in subjects that will be useful to your company.</p>
+    <p class ="Content">  I am also a fast and flexible learner that can adapt to any environment I work in. I am a friendly, loyal and passionate individual.</p>
+    <a button href="https://www.github.com/Himeru27" class="scam">My fav website</a button>
+    <audio controls class="audios"> <source src="audioz.mp3"> </audio>
+    <video width="320" height="240" controls class="vidz">
+    <source src="853767-hd_1920_1080_25fps.mp4" class="vidz" type="video/mp4">
+
+    
+    
+</body>
+</html>
+
+----------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .Headz{
+        font-size: xx-large;
+
+    }
+
+    .intro {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .age{
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .location {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+    }
+    .scam {
+        color: black;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        font-size: xx-large;
+        text-decoration: none;
+        font-weight: bold;
+        
+    }
+    .pic {
+        color: black;
+        container: center;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        box-shadow: gray;
+        
+
+    }
+    .vidz {
+        color: black;
+        container: center;
+        font-size: xx-large;
+        width: 500px;
+        display: block;
+        margin-top: 50px;
+        box-shadow: gray;
+    }
+    .Content {
+        color: black;
+        text-align: center;
+        font-size: xx-large;
+
+    }
+
+
+</style>
+<body>
+    <h3 class="Headz">Title: Introduce Yourself</h3>
+    <img src="IMG_20241118_115853.jpg" class="pic" alt="dame tu cosita">
+    <br class ="intro"> Hello! I am Jhoshua Christian A. Shimoyama.</br>
+    <br class ="age">I am 19 Years old.</br>
+    <br class ="location"> Currently living in Cagayan de oro!</br>
+    <br class ="Content"> I am an IT graduate with excellent qualifications in subjects that will be useful to your company.</br>
+    <br class ="Content">  I am also a fast and flexible learner that can adapt to any environment I work in. I am a friendly, loyal and passionate individual.</br>
+    <a button href="https://www.github.com/Himeru27" class="scam">My fav website</a button>
+    <audio controls class="audios"> <source src="audioz.mp3"> </audio>
+    <video width="320" height="240" controls class="vidz">
+        
+    <source src="853767-hd_1920_1080_25fps.mp4" class="vidz" type="video/mp4">
+    
+    
+    
+</body>
+</html>
